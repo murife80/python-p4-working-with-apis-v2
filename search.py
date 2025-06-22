@@ -1,34 +1,6 @@
 import requests
-import json
-
 
 class Search:
-
-    def get_search_results(self):
-        search_term = "the lord of the rings"
-
-        search_term_formatted = search_term.replace(" ", "+")
-        fields = ["title", "author_name"]
-        fields_formatted = ",".join(fields)
-        limit = 1
-
-        URL = f"https://openlibrary.org/search.json?title={search_term_formatted}&fields={fields_formatted}&limit={limit}"
-
-        response = requests.get(URL)
-        return response.content
-
-    def get_search_results_json(self):
-        search_term = "the lord of the rings"
-
-        search_term_formatted = search_term.replace(" ", "+")
-        fields = ["title", "author_name"]
-        fields_formatted = ",".join(fields)
-        limit = 1
-
-        URL = f"https://openlibrary.org/search.json?title={search_term_formatted}&fields={fields_formatted}&limit={limit}"
-        print(URL)
-        response = requests.get(URL)
-        return response.json()
 
     def get_user_search_results(self, search_term):
         try:
@@ -53,7 +25,6 @@ class Search:
             return f"Title: {title}\nAuthor: {authors[0]}"
         except Exception as e:
             return f"Error: {e}"
-
 
 if __name__ == "__main__":
     search_term = input("Enter a book title: ")
